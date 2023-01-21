@@ -28,8 +28,13 @@ function notNull<T>(value: T | null): value is T {
 export default function Dancing({ letters, height }: Props) {
   const children = letters
     .split("")
-    .map(mapToImage)
+    .map((l) => {
+      const image = mapToImage(l);
+      return image ? ([l, image] as const) : null;
+    })
     .filter(notNull)
-    .map((image) => <img src={`/letters/${image}.gif`} height={height} />);
+    .map(([l, image]) => (
+      <img src={`/letters/${image}.gif`} alt={l} height={height} />
+    ));
   return <>{children}</>;
 }
