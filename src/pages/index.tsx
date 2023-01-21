@@ -11,7 +11,7 @@ export default function IndexPage(props: PageProps) {
     <main>
       <div style={{ textAlign: "center", paddingTop: 20 }}>
         <p>Welcome to</p>
-        <Dancing letters="garf.lol" width={100} />
+        <Dancing letters="garf.lol" height={90} />
       </div>
       <div style={{ textAlign: "center", paddingTop: 80 }}>
         <img src={bliss} />
