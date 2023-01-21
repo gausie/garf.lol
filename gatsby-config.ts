@@ -9,7 +9,17 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `garf.lol`,
+        short_name: `garf.lol`,
+        start_url: `/`,
+        icon: "src/images/garfthumb.png"
+      },
+    },
+  ],
 }
 
 export default config
