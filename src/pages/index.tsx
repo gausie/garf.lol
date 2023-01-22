@@ -2,8 +2,7 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 
 import Dancing from "../components/Dancing";
-// @ts-ignore
-import bliss from "../images/garfbliss.png";
+import { StaticImage } from "gatsby-plugin-image";
 
 export const Head: HeadFC = () => <title>garf.lol</title>;
 
@@ -18,7 +17,10 @@ export default function IndexPage(props: PageProps) {
       </section>
       <section style={{ textAlign: "center", paddingTop: 80 }}>
         <a href="/garfchive">
-          <img src={bliss} />
+          <StaticImage
+            src="../images/stickers/garfbliss.png"
+            alt="Garf is love"
+          />
           <p>[ Enter ]</p>
         </a>
       </section>

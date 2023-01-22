@@ -1,8 +1,6 @@
 import * as React from "react";
 import { HeadFC, PageProps } from "gatsby";
-
-// @ts-ignore
-import thumb from "../images/garfthumb.png";
+import { StaticImage } from "gatsby-plugin-image";
 
 const pageStyle: React.CSSProperties = {
   backgroundColor: "#ff5c00",
@@ -28,7 +26,11 @@ export default function NotFoundPage(props: PageProps) {
   return (
     <main style={pageStyle}>
       <a href="/">
-        <img style={garf} src={thumb} />
+        <StaticImage
+          style={garf}
+          src="../images/garfthumb.png"
+          alt="it's garfy"
+        />
       </a>
       <p style={immune}>you are not immune to 404 errors</p>
     </main>
