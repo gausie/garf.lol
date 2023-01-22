@@ -1,9 +1,10 @@
 import * as React from "react";
 import { HeadFC, PageProps } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import "./404.css";
 
 const pageStyle: React.CSSProperties = {
-  backgroundColor: "#ff5c00",
+  backgroundColor: "#7dc3c1",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -12,7 +13,8 @@ const pageStyle: React.CSSProperties = {
 };
 
 const garf: React.CSSProperties = {
-  maxWidth: 100,
+  width: "80%",
+  maxWidth: 800,
 };
 
 const immune: React.CSSProperties = {
@@ -25,14 +27,14 @@ export const Head: HeadFC = () => <title>garf not found</title>;
 export default function NotFoundPage(props: PageProps) {
   return (
     <main style={pageStyle}>
-      <a href="/">
+      <a href="/" style={{ textAlign: "center" }}>
         <StaticImage
           style={garf}
-          src="../images/garfthumb.png"
-          alt="it's garfy"
+          src="../images/propaganda.png"
+          alt="you are not immune to 404 errors"
+          placeholder="none"
         />
       </a>
-      <p style={immune}>you are not immune to 404 errors</p>
     </main>
   );
 }
