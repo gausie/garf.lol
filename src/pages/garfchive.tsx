@@ -2,11 +2,13 @@ import Gallery from "@browniebroke/gatsby-image-gallery";
 import { graphql } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import * as React from "react";
+import Caption from "../components/Caption";
 
 type Edges<T> = { edges: T[] };
 
 type Garves = {
   node: {
+    html: string;
     frontmatter: {
       name: string;
       author: string;
@@ -29,15 +31,19 @@ type Props = {
 };
 
 const extractImages = (set: Edges<Garves>) =>
-  set.edges.map(({ node: { frontmatter: garf } }) => ({
+  set.edges.map(({ node: { html, frontmatter: garf } }) => ({
     ...garf.image.childImageSharp,
     title: garf.name,
-    caption: `By ${garf.author} (${garf.date})`,
+    caption: <Caption author={garf.author} date={garf.date} html={html} />,
   }));
 
+type ImageProp = React.ComponentProps<typeof Gallery>["images"][number];
+
 export default function Garfchive({ data }: Props) {
-  const emoji = extractImages(data.emoji);
-  const stickers = extractImages(data.stickers);
+  // @ts-ignore until PR 1140 is merged
+  const emoji = extractImages(data.emoji) as ImageProp[];
+  // @ts-ignore until PR 1140 is merged
+  const stickers = extractImages(data.stickers) as ImageProp[];
 
   return (
     <main style={{ margin: 40 }}>
@@ -61,6 +67,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          html
           frontmatter {
             name
             author
@@ -86,6 +93,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          html
           frontmatter {
             name
             author
