@@ -3,30 +3,36 @@ import { graphql } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import * as React from "react";
 
-interface ImageSharpEdge {
+type Edges<T> = { edges: T[] };
+
+type Garves = {
   node: {
-    childImageSharp: {
-      thumb: IGatsbyImageData;
-      full: IGatsbyImageData;
+    frontmatter: {
+      name: string;
+      author: string;
+      date: string;
+      image: {
+        childImageSharp: {
+          thumb: IGatsbyImageData;
+          full: IGatsbyImageData;
+        };
+      };
     };
   };
-}
-
-type ImageSet = {
-  edges: ImageSharpEdge[];
 };
 
-interface Props {
+type Props = {
   data: {
-    emoji: ImageSet;
-    stickers: ImageSet;
+    emoji: Edges<Garves>;
+    stickers: Edges<Garves>;
   };
-}
+};
 
-const extractImages = (images: ImageSet) =>
-  images.edges.map(({ node }) => ({
-    ...node.childImageSharp,
-    caption: "Another image",
+const extractImages = (set: Edges<Garves>) =>
+  set.edges.map(({ node: { frontmatter: garf } }) => ({
+    ...garf.image.childImageSharp,
+    title: garf.name,
+    caption: `By ${garf.author} (${garf.date})`,
   }));
 
 export default function Garfchive({ data }: Props) {
@@ -37,7 +43,7 @@ export default function Garfchive({ data }: Props) {
     <main style={{ margin: 40 }}>
       <div>
         <h2>Emoji</h2>
-        <Gallery images={emoji} />
+        <Gallery colWidth={100 / 6} mdColWidth={100 / 12} images={emoji} />
       </div>
       <div>
         <h2>Stickers</h2>
@@ -49,38 +55,52 @@ export default function Garfchive({ data }: Props) {
 
 export const pageQuery = graphql`
   query Garves {
-    emoji: allFile(
-      filter: { relativeDirectory: { eq: "emoji" } }
-      sort: { name: ASC }
+    emoji: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/emoji/" } }
+      sort: { fields: [frontmatter___date], order: ASC }
     ) {
       edges {
         node {
-          childImageSharp {
-            thumb: gatsbyImageData(
-              width: 32
-              height: 32
-              placeholder: BLURRED
-              transformOptions: { fit: INSIDE }
-            )
-            full: gatsbyImageData(layout: FULL_WIDTH)
+          frontmatter {
+            name
+            author
+            date(formatString: "dddd, Do MMMM YYYY")
+            image {
+              childImageSharp {
+                thumb: gatsbyImageData(
+                  width: 32
+                  height: 32
+                  placeholder: BLURRED
+                  transformOptions: { fit: INSIDE }
+                )
+                full: gatsbyImageData(layout: FULL_WIDTH)
+              }
+            }
           }
         }
       }
     }
-    stickers: allFile(
-      filter: { relativeDirectory: { eq: "stickers" } }
-      sort: { name: ASC }
+    stickers: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/stickers/" } }
+      sort: { fields: [frontmatter___date], order: ASC }
     ) {
       edges {
         node {
-          childImageSharp {
-            thumb: gatsbyImageData(
-              width: 320
-              height: 320
-              placeholder: BLURRED
-              transformOptions: { fit: INSIDE }
-            )
-            full: gatsbyImageData(layout: FULL_WIDTH)
+          frontmatter {
+            name
+            author
+            date(formatString: "dddd, Do MMMM YYYY")
+            image {
+              childImageSharp {
+                thumb: gatsbyImageData(
+                  width: 160
+                  height: 160
+                  placeholder: BLURRED
+                  transformOptions: { fit: INSIDE }
+                )
+                full: gatsbyImageData(layout: FULL_WIDTH)
+              }
+            }
           }
         }
       }

@@ -18,7 +18,7 @@ export default function IndexPage(props: PageProps) {
       <section style={{ textAlign: "center", paddingTop: 80 }}>
         <a href="/garfchive">
           <StaticImage
-            src="../images/stickers/garfbliss.png"
+            src="../archive/stickers/garfbliss.png"
             alt="Garf is love"
           />
           <p>[ Enter ]</p>

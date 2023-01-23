@@ -1,7 +1,6 @@
 import * as React from "react";
 import { HeadFC, PageProps } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import "./404.css";
 
 const pageStyle: React.CSSProperties = {
   backgroundColor: "#7dc3c1",
@@ -15,6 +14,7 @@ const pageStyle: React.CSSProperties = {
 const garf: React.CSSProperties = {
   width: "80%",
   maxWidth: 800,
+  animation: "50s glitch infinite linear",
 };
 
 const immune: React.CSSProperties = {

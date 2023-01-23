@@ -19,6 +19,13 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `archive`,
+        path: `${__dirname}/src/archive`,
+      },
+    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -29,6 +36,7 @@ const config: GatsbyConfig = {
         icon: "src/images/garfthumb.png"
       },
     },
+    `gatsby-transformer-remark`,
   ],
 }
 
