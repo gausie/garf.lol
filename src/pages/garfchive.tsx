@@ -63,7 +63,7 @@ export const pageQuery = graphql`
   query Garves {
     emoji: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/emoji/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { frontmatter: { date: ASC } }
     ) {
       edges {
         node {
@@ -89,7 +89,7 @@ export const pageQuery = graphql`
     }
     stickers: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/stickers/" } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { frontmatter: { date: ASC } }
     ) {
       edges {
         node {

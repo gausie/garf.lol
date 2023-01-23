@@ -6,32 +6,32 @@ html, body {
 
 @keyframes glitch {
   0% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
   0.1% {
-    filter: drop-shadow(-3px 0 1px red) drop-shadow(2px 0 1px cyan);
+    filter: drop-shadow(-3px 0 1px red) drop-shadow(2px 0 1px cyan) blur(1px);
   }
   0.2% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
 
   11% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
   11.1% {
-    filter: drop-shadow(-3px 0 1px red) drop-shadow(2px 0 1px cyan);
+    filter: drop-shadow(-3px 0 1px red) drop-shadow(2px 0 1px cyan) blur(1px);
   }
   11.2% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
 
   69% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
   69.1% {
-    filter: drop-shadow(-4px 0 1px red) drop-shadow(2px 0 1px cyan);
+    filter: drop-shadow(-4px 0 1px red) drop-shadow(2px 0 1px cyan) blur(1px);
   }
   70% {
-    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan);
+    filter: drop-shadow(2px 0 1px red) drop-shadow(-2px 0 1px cyan) blur(1px);
   }
 }
